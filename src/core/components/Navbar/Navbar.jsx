@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink} from "react-router-dom";
-import { AppBar, Toolbar, Typography} from '@mui/material'
-import '../../content/styles/Nav.css'
+import { AppBar, Toolbar, Typography} from '@mui/material';
+import { NavHashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
   return(
@@ -13,7 +13,9 @@ const Navbar = () => {
           </Typography>
           <nav>
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='/Portfolio'>Portfolio</NavLink>
+            <NavHashLink smooth to="/#portfolio">
+              Portfolio
+            </NavHashLink>
             <NavLink to='/FAQ'>FAQ</NavLink>
             <NavLink to='/Contact'>Contact</NavLink>
           </nav>
