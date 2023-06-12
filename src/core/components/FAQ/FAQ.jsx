@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Contact from '../Contact/Contact'
 
 const FAQ = () => {
     return (
@@ -6,6 +7,7 @@ const FAQ = () => {
             <div className='test-div'>
                 <h2>FAQ Page</h2>
             </div>
+            <Contact/>
         </React.Fragment>
     )
 }

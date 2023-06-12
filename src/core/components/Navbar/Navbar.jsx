@@ -13,11 +13,9 @@ const Navbar = () => {
           </Typography>
           <nav>
             <NavLink to='/'>Home</NavLink>
-            <NavHashLink smooth to="/#portfolio">
-              Portfolio
-            </NavHashLink>
+            <NavHashLink smooth to="/#portfolio">Portfolio</NavHashLink>
             <NavLink to='/FAQ'>FAQ</NavLink>
-            <NavLink to='/Contact'>Contact</NavLink>
+            <NavHashLink smooth to='/FAQ/#contact'>Contact</NavHashLink>
           </nav>
       </Toolbar>
       </AppBar>

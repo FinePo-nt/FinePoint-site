@@ -44,6 +44,48 @@ nav a:hover{
 }
 
 
+// Contact Page Styling
+.contact-form-container{
+    background-color: #2b2d42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color:white;
+}
+
+.contact-form-container h2{
+    font-size: 3rem;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.contact-form-container button{
+    background-color: white;
+    color:black;
+    border-radius: 2;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-container button:hover{
+    background-color: #a54657;
+    color:white
+}
+
+.form-button-container{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+
+
+
 // Footer Styling
 
 .footer-main-div{
