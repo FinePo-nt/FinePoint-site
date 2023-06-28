@@ -1,12 +1,13 @@
 import * as React from 'react';
-import '../../content/styles/Hero.css'
 import '../../../App.css'
 import Hero from '../../content/Hero';
+import Portfolio from '../Portfolio/Portfolio';
 
 const Home = () => {
  return(
     <React.Fragment>
          <Hero /> 
+         <Portfolio/>
     </React.Fragment>
  );
 }

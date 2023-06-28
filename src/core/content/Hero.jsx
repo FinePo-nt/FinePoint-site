@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "@mui/material";
-import './styles/Hero.css'
 
 const Hero = () => {
     return (
