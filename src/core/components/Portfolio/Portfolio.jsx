@@ -1,11 +1,10 @@
 import * as React from 'react';
+import PortfolioContainers from '../../content/PortfolioContainer';
 
 const Portfolio = () => {
     return (
         <React.Fragment>
-            <section id='portfolio' className='test-div'>
-                    <h2>Portfolio Component</h2>
-            </section>
+           <PortfolioContainers />
         </React.Fragment>
     )
 }
