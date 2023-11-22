@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PortfolioContainers from '../../content/PortfolioContainer';
+import PortfolioContainers from './PortfolioContainer';
 
 const Portfolio = () => {
     return (

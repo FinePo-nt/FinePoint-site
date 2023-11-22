@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './core/content/styles/main.scss'
+import './core/site/styles/main.scss'
 import './App.css';
-import Home from './core/components/Home/Home';
+import Home from './core/site/Home/Home';
 import Navbar from './core/components/Navbar/Navbar';
-import FAQ from './core/components/FAQ/FAQ';
+import FAQ from './core/site/FAQ/FAQ';
 import Footer from './core/components/Footer/Footer'
 import {  Route, Routes } from 'react-router-dom';
 

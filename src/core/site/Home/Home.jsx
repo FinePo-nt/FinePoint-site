@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../../../App.css'
-import Hero from '../../content/Hero';
-import Portfolio from '../Portfolio/Portfolio';
+import Hero from '../../components/Hero/Hero';
+import Portfolio from '../../components/Portfolio/Portfolio';
 
 const Home = () => {
  return(
