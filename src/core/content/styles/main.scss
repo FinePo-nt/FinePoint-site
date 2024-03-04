@@ -174,3 +174,10 @@ hr{
       margin: 0;
     }
   }
+
+ .modal-box-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
