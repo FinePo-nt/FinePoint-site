@@ -31,6 +31,7 @@ jobs:
         run: echo "::set-output name=url::https://${{ github.actor }}.github.io/${{ github.repository }}/pr-preview-${{ github.event.pull_request.number }}"
 
       - name: Comment Preview URL
+        if: steps.deploy.outcome == 'success'
         uses: actions/github-script@v5
         with:
           github-token: ${{ secrets.SECRET_TOKEN }}
