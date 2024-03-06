@@ -1,27 +1,44 @@
-name: Preview React App
+name: Preview React App in Pull Request
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Build React App
-      run: npm run build
+      - name: Build React App
+        run: npm run build
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+      - name: Deploy to Temporary Environment
+        id: deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          BRANCH: pr-preview-${{ github.event.pull_request.number }}
+          FOLDER: build
+
+      - name: Get Preview URL
+        id: get_url
+        run: echo "::set-output name=url::https://${{ github.actor }}.github.io/${{ github.repository }}/pr-preview-${{ github.event.pull_request.number }}"
+
+      - name: Comment Preview URL
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.SECRET_TOKEN }}
+          script: |
+            const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Preview available at: ${process.env.url}`
+            })
+            console.log(`Commented on ${issueUrl}`)
