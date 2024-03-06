@@ -21,8 +21,8 @@ jobs:
 
       - name: Build and test
         run: |
-        npm run build
-        npm test
+          npm run build
+          npm test
 
       - name: Run ESLint
         run: npm run lint
