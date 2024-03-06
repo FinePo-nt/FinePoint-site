@@ -26,10 +26,6 @@ jobs:
           BRANCH: pr-preview-${{ github.event.pull_request.number }}
           FOLDER: build
 
-      - name: Get Preview URL
-        id: get_url
-        run: echo "::set-output name=url::https://${{ github.actor }}.github.io/${{ github.repository }}/pr-preview-${{ github.event.pull_request.number }}"
-
       - name: Comment Preview URL
         if: steps.deploy.outcome == 'success'
         uses: actions/github-script@v5
@@ -40,6 +36,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview available at: ${process.env.url}`
+              body: `Preview available at: https://finepo-nt.github.io/pr-preview-${{ github.event.pull_request.number }}`
             })
             console.log(`Commented on ${issueUrl}`)
