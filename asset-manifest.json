@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a7f8420d.css",
+    "main.js": "/static/js/main.c89eba29.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/social-psychological-bullitin.png": "/static/media/social-psychological-bullitin.1281d4d868e80cd3e54d.png",
+    "index.html": "/index.html",
+    "main.a7f8420d.css.map": "/static/css/main.a7f8420d.css.map",
+    "main.c89eba29.js.map": "/static/js/main.c89eba29.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7f8420d.css",
+    "static/js/main.c89eba29.js"
+  ]
+}
