@@ -1,8 +1,9 @@
-name: Deploy Preview
+name: Deploy to GitHub Pages
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push:
+    branches:
+      - main 
 
 jobs:
   deploy:
@@ -23,26 +24,9 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      - name: Deploy to Temporary Environment
-        id: deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
-          BRANCH: pr-preview-${{ github.event.pull_request.number }}
-          FOLDER: build
-
-      - name: Comment Preview URL on Pull Request
-        if: success() && github.event.pull_request
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.SECRET_TOKEN }}
-          script: |
-            const branchName = `pr-preview-${{ github.event.pull_request.number }}`;
-            const repoName = `${context.repo.owner}/${context.repo.repo}`;
-            const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview available at: https://${repoName}/${branchName}`
-            });
-            console.log(`Commented on ${issueUrl}`);
+          github_token: ${{ secrets.SECRET_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
