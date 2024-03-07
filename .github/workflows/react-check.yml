@@ -36,7 +36,7 @@ jobs:
         with:
           github-token: ${{ secrets.SECRET_TOKEN }}
           script: |
-            const branchName = `pr-preview-${github.context.payload.pull_request.number}`;
+            const branchName = `pr-preview-${{ github.event.pull_request.number }}`;
             const repoName = `${context.repo.owner}/${context.repo.repo}`;
             const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
               issue_number: context.issue.number,
