@@ -30,19 +30,18 @@ jobs:
           publish_dir: ./build
           publish_branch: pr-preview-${{ github.event.pull_request.number }}
 
-      - name: Comment Preview URL on Pull Request
-        if: success() && github.event.pull_request
+      - name: Comment Preview URL
+        if: success()
         uses: actions/github-script@v5
         with:
             github-token: ${{ secrets.SECRET_TOKEN }}
             script: |
-              const branchName = `pr-preview-${github.context.payload.pull_request.number}`;
               const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `Preview available at: https://finepo-nt.github.io/${branchName}/github-preview`
-              });
-              console.log(`Commented on ${issueUrl}`);
+                body: `Preview available at: https://finepo-nt.github.io/pr-preview-${{ github.event.pull_request.number }}`
+              })
+              console.log(`Commented on ${issueUrl}`)
         
         
