@@ -29,8 +29,7 @@ jobs:
         with:
           github_token: ${{ secrets.SECRET_TOKEN }}
           publish_dir: ./build
-          publish_branch: ${{ github.ref_slug }}
-          publish_dir_prefix: github-preview
+          publish_branch: ${{ github.head_ref }}/github-preview
 
       - name: Comment Preview URL on Pull Request
         if: success()
@@ -42,6 +41,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview available at: https://finepo-nt.github.io/${{ github.ref_slug }}/github-preview`
+              body: `Preview available at: https://finepo-nt.github.io/${{ github.head_ref }}/github-preview`
             })
             console.log(`Commented on ${issueUrl}`)
