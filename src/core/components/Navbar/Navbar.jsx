@@ -9,12 +9,12 @@ const Navbar = () => {
       <AppBar sx={{backgroundColor: 'transparent', boxShadow: 'none'}}>
       <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="#fff" noWrap sx={{ flexGrow: 1 }}>
-            FinePoint Designs
+            <NavLink smooth to='/#home'>FinePoint Designs</NavLink>
           </Typography>
           <nav>
-            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/#home'>Home</NavLink>
             <NavHashLink smooth to="/#portfolio">Portfolio</NavHashLink>
-            <NavLink to='/FAQ'>FAQ</NavLink>
+            <NavHashLink smooth to='/FAQ/#FAQ'>FAQ</NavHashLink>
             <NavHashLink smooth to='/FAQ/#contact'>Contact</NavHashLink>
           </nav>
       </Toolbar>
