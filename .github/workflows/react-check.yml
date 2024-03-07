@@ -28,7 +28,7 @@ jobs:
         with:
           github_token: ${{ secrets.SECRET_TOKEN }}
           publish_dir: ./build
-          publish_branch: ${{ github.head_ref }}-preview/github-preview
+          publish_branch: pr-preview-${{ github.event.pull_request.number }}
 
       - name: Comment Preview URL on Pull Request
         if: success() && github.event.pull_request
@@ -36,7 +36,7 @@ jobs:
         with:
             github-token: ${{ secrets.SECRET_TOKEN }}
             script: |
-              const branchName = github.context.payload.pull_request.head.ref + "-preview";
+              const branchName = `pr-preview-${github.context.payload.pull_request.number}`;
               const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
@@ -44,4 +44,5 @@ jobs:
                 body: `Preview available at: https://finepo-nt.github.io/${branchName}/github-preview`
               });
               console.log(`Commented on ${issueUrl}`);
+        
         
