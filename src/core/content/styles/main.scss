@@ -3,13 +3,9 @@
     min-height: 100vh;
 }
 
-.test-div{
-    background-color: lightslategray;
-    position: relative;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+a{
+    text-decoration: none;
+    color:white;
 }
 
 nav a{
@@ -44,8 +40,31 @@ nav a:hover{
     text-shadow: .02em .02em 0 hsl(199, 11%, 72%);
 }
 
+.modal-box-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
 
-// Contact Page Styling
+
+// Contact & FAQ Page Styling
+.faq-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: lightslategray;
+ }
+
+
+ .faq-container div{
+    margin: 8px;
+ }
+
+
 .contact-form-container{
     background-color: #2b2d42;
     display: flex;
@@ -55,9 +74,9 @@ nav a:hover{
     color:white;
 }
 
-.contact-form-container h2{
+.contact-h2{
     font-size: 3rem;
-    padding-bottom: 10px;
+    padding-bottom: 5%;
     display: flex;
     justify-content: center;
 }
@@ -74,7 +93,7 @@ nav a:hover{
 }
 
 .contact-form-container button:hover{
-    background-color: #a54657;
+    background-color: #c06e52;
     color:white
 }
 
@@ -174,10 +193,3 @@ hr{
       margin: 0;
     }
   }
-
- .modal-box-wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
- }

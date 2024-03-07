@@ -8,7 +8,7 @@ const Contact = () => {
         <React.Fragment>
             <section className='contact-form-container' id="contact">
                 <div>
-                <h2>Contact Us</h2>
+                <h2 className='contact-h2'>Contact Us</h2>
                 <form>
                     <Box
                         component="form"
