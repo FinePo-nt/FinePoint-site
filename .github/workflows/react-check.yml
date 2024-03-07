@@ -1,16 +1,21 @@
-name: Preview React App in Pull Request
+name: Deploy Preview
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
       - name: Install Dependencies
         run: npm install
@@ -18,16 +23,16 @@ jobs:
       - name: Build React App
         run: npm run build
 
-      - name: Deploy to Temporary Environment
-        id: deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy to Preview Folder
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ACCESS_TOKEN: ${{ secrets.SECRET_TOKEN }}
-          BRANCH: pr-preview-${{ github.event.pull_request.number }}
-          FOLDER: build
+          github_token: ${{ secrets.SECRET_TOKEN }}
+          publish_dir: ./build
+          publish_branch: ${{ github.ref_slug }}
+          publish_dir_prefix: github-preview
 
-      - name: Comment Preview URL
-        if: steps.deploy.outcome == 'success'
+      - name: Comment Preview URL on Pull Request
+        if: success()
         uses: actions/github-script@v5
         with:
           github-token: ${{ secrets.SECRET_TOKEN }}
@@ -36,6 +41,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Preview available at: https://finepo-nt.github.io/pr-preview-${{ github.event.pull_request.number }}`
+              body: `Preview available at: https://finepo-nt.github.io/${{ github.ref_slug }}/github-preview`
             })
             console.log(`Commented on ${issueUrl}`)
