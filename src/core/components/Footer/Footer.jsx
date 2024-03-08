@@ -23,10 +23,10 @@ const Footer = () => {
                         <p>FOLLOW US</p>
                         <div className='footer-social-wrapper'>
                             <div>
-                                <a href='#'><InstagramIcon color='#2b2d42'/></a>
+                                <a href="www.google.com"><InstagramIcon color='#2b2d42'/></a>
                             </div>
                             <div>
-                                <a href='#'><TwitterIcon color='#2b2d42'/></a>
+                                <a href="www.google.com"><TwitterIcon color='#2b2d42'/></a>
                             </div>
                         </div>
                     </div>
