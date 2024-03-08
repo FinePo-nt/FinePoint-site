@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Preview
 
 on:
   pull_request:
@@ -28,4 +28,20 @@ jobs:
         with:
           github_token: ${{ secrets.SECRET_TOKEN }}
           publish_dir: ./build
-          publish_branch: gh-pages
+          publish_branch: pr-preview-${{ github.event.pull_request.number }}
+
+      - name: Comment Preview URL on Pull Request
+        if: success() && github.event.pull_request
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.SECRET_TOKEN }}
+          script: |
+            const branchName = `pr-preview-${{ github.event.pull_request.number }}`;
+            const repoName = `${context.repo.owner}/${context.repo.repo}`;
+            const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Preview available at: https://${repoName}/${branchName}`
+            });
+            console.log(`Commented on ${issueUrl}`);
