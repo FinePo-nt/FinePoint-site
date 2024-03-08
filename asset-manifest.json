@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.2e5b4b3c.css",
-    "main.js": "/static/js/main.865e4f4d.js",
+    "main.js": "/static/js/main.9ef5ce6c.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/social-psychological-bullitin.png": "/static/media/social-psychological-bullitin.1281d4d868e80cd3e54d.png",
     "index.html": "/index.html",
     "main.2e5b4b3c.css.map": "/static/css/main.2e5b4b3c.css.map",
-    "main.865e4f4d.js.map": "/static/js/main.865e4f4d.js.map",
+    "main.9ef5ce6c.js.map": "/static/js/main.9ef5ce6c.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2e5b4b3c.css",
-    "static/js/main.865e4f4d.js"
+    "static/js/main.9ef5ce6c.js"
   ]
 }
