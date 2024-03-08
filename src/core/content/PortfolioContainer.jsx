@@ -67,7 +67,7 @@ const PortfolioContainers = () => {
             <Slider {...sliderSettings}>
               {images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`Image ${index}`} style={{ maxWidth: '100%' }} />
+                  <img src={image} alt={`${index}`} style={{ maxWidth: '100%' }} />
                 </div>
               ))}
             </Slider>
@@ -91,7 +91,7 @@ const PortfolioContainers = () => {
             <Slider {...sliderSettings}>
               {images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`Image ${index}`} style={{ maxWidth: '100%' }} />
+                  <img src={image} alt={`${index}`} style={{ maxWidth: '100%' }} />
                 </div>
               ))}
             </Slider>
@@ -115,7 +115,7 @@ const PortfolioContainers = () => {
             <Slider {...sliderSettings}>
               {images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt={`Image ${index}`} style={{ maxWidth: '100%' }} />
+                  <img src={image} alt={`${index}`} style={{ maxWidth: '100%' }} />
                 </div>
               ))}
             </Slider>
