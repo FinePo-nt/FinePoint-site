@@ -54,11 +54,13 @@ jobs:
             
       - name: Commit and Push Changes
         run: |
-              git config --global user.name 'GitHub Actions'
-              git config --global user.email 'actions@users.noreply.github.com'
-              git checkout -b gh-pages  # Switch to the gh-pages branch or create it if it doesn't exist
-              git add -f ./build/index.html
-              git commit -m 'Update index.html paths for GitHub Pages'
-              git push origin gh-pages  # Push changes to the gh-pages branch
-            
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@users.noreply.github.com'
+          git checkout gh-pages  # Switch to the gh-pages branch
+          git fetch origin gh-pages  # Fetch the latest changes
+          git rebase origin/gh-pages  # Rebase local changes on top of fetched changes
+          git add -f build/index.html  # Force-add the build directory
+          git commit -m 'Update index.html paths for GitHub Pages'
+          git push origin gh-pages  # Push changes to the gh-pages branch
+              
                 
