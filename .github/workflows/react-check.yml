@@ -44,8 +44,9 @@ jobs:
             });
             console.log(`Commented on ${issueUrl}`);
 
-      - name: Update index.html
+      - name: Update Index HTML
         run: |
-            sed -i 's|/static/js/main.*\.js|/FinePoint-site/static/js/main.*\.js|g' ./build/index.html
-            sed -i 's|/static/css/main.*\.css|/FinePoint-site/static/css/main.*\.css|g' ./build/index.html
+              sed -i 's|/static/|/FinePoint-site/static/|g' build/index.html
+              sed -i 's|href="/|href="/FinePoint-site/|g' build/index.html
+              sed -i 's|src="/|src="/FinePoint-site/|g' build/index.html
                 
