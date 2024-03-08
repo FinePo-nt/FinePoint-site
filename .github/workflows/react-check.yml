@@ -44,9 +44,21 @@ jobs:
             });
             console.log(`Commented on ${issueUrl}`);
 
+     
+            
       - name: Update Index HTML
         run: |
               sed -i 's|/static/|/FinePoint-site/static/|g' ./build/index.html
               sed -i 's|href="/|href="/FinePoint-site/|g' ./build/index.html
               sed -i 's|src="/|src="/FinePoint-site/|g' ./build/index.html
+            
+      - name: Commit and Push Changes
+        run: |
+              git config --global user.name 'GitHub Actions'
+              git config --global user.email 'actions@users.noreply.github.com'
+              git checkout -b gh-pages  # Switch to the gh-pages branch or create it if it doesn't exist
+              git add ./build/index.html
+              git commit -m 'Update index.html paths for GitHub Pages'
+              git push origin gh-pages  # Push changes to the gh-pages branch
+            
                 
