@@ -28,30 +28,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          publish_branch: gh-pages
-
-      - name: Comment Preview URL on Pull Request
-        if: success() && github.event.pull_request
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview available at: https://finepo-nt.github.io/FinePoint-site`
-            });
-            console.log(`Commented on ${issueUrl}`);
-
-     
+          publish_branch: gh-pages 
             
       - name: Update Index HTML
         run: |
-              sed -i 's|/static/|/FinePoint-site/static/|g' ./build/index.html
-              sed -i 's|href="/|href="/FinePoint-site/|g' ./build/index.html
-              sed -i 's|src="/|src="/FinePoint-site/|g' ./build/index.html
-            
+          sed -i 's|/static/|/FinePoint-site/static/|g' ./build/index.html
+          sed -i 's|href="/|href="/FinePoint-site/|g' ./build/index.html
+          sed -i 's|src="/|src="/FinePoint-site/|g' ./build/index.html
+              
       - name: Commit and Push Changes
         run: |
               git config --global user.name 'GitHub Actions'
@@ -63,4 +47,17 @@ jobs:
               git commit -m 'Update index.html paths for GitHub Pages'
               git push origin gh-pages  # Push changes to the gh-pages branch
             
+      - name: Comment Preview URL on Pull Request
+        if: success() && github.event.pull_request
+        uses: actions/github-script@v5
+        with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                script: |
+                  const { data: { html_url: issueUrl } } = await github.rest.issues.createComment({
+                    issue_number: context.issue.number,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: `Preview available at: https://finepo-nt.github.io/FinePoint-site`
+                  });
+                  console.log(`Commented on ${issueUrl}`);
                 
