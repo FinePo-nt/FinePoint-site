@@ -58,7 +58,8 @@ jobs:
               git config --global user.email 'actions@users.noreply.github.com'
               git pull --allow-unrelated-histories --no-rebase origin gh-pages
               git checkout -b gh-pages  # Switch to the gh-pages branch or create it if it doesn't exist
-              git add -f ./build/index.html
+              cp ./build/index.html index.html
+              git add -f index.html
               git commit -m 'Update index.html paths for GitHub Pages'
               git push origin gh-pages  # Push changes to the gh-pages branch
             
